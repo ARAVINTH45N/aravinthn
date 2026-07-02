@@ -32,17 +32,22 @@ function useTyping(words: string[]) {
 }
 
 function Particles() {
-  const dots = useMemo(
-    () => Array.from({ length: 26 }).map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      dur: Math.random() * 6 + 6,
-      delay: Math.random() * 5,
-    })),
-    []
-  );
+  const [dots, setDots] = useState<
+    { id: number; left: number; top: number; size: number; dur: number; delay: number }[]
+  >([]);
+  useEffect(() => {
+    setDots(
+      Array.from({ length: 26 }).map((_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        dur: Math.random() * 6 + 6,
+        delay: Math.random() * 5,
+      }))
+    );
+  }, []);
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       {dots.map((d) => (
