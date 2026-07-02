@@ -1,24 +1,65 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/portfolio/Nav";
+import { Hero } from "@/components/portfolio/Hero";
+import { CursorGlow } from "@/components/portfolio/CursorGlow";
+import {
+  About, Skills, Projects, Education, Leadership, Achievements, Contact, Footer,
+} from "@/components/portfolio/Sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Aravinth N — AI, Cloud & Full Stack Engineer | Founder of Zelabria" },
+      {
+        name: "description",
+        content:
+          "Aravinth N — Electronics & Communication Engineer, AI & Data Engineer, Cloud enthusiast, Full Stack & IoT developer, and Founder & CEO of Zelabria. Explore projects, skills and research.",
+      },
+      { property: "og:title", content: "Aravinth N — Engineer, AI Builder & Founder" },
+      { property: "og:description", content: "AI, Cloud, Full Stack & IoT engineer. Founder & CEO of Zelabria." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Aravinth N",
+          jobTitle: "AI Engineer, Full Stack Developer, Founder & CEO of Zelabria",
+          url: "/",
+          sameAs: [
+            "https://www.linkedin.com/in/aravinth-n-005085290/",
+            "https://github.com/ARAVINTH45N",
+            "https://www.instagram.com/_aravinthhh/",
+          ],
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="relative min-h-screen overflow-x-hidden">
+      <div className="aurora" />
+      <CursorGlow />
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Education />
+        <Leadership />
+        <Achievements />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }
