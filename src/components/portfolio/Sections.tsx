@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Target, Eye, Compass, Rocket, GraduationCap, Briefcase, Award, Github, ExternalLink,
+  Target, Eye, Compass, Rocket, GraduationCap, Briefcase, ExternalLink,
   MapPin, Mail, Phone, Trophy, BadgeCheck,
 } from "lucide-react";
 import {
