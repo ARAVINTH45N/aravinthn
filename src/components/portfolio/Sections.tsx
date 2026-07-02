@@ -10,6 +10,8 @@ import {
 } from "@/content/portfolio";
 import { Reveal, SectionHeading, Counter } from "./primitives";
 import { SocialIcon } from "./SocialIcon";
+import { FaGithub as Github } from "react-icons/fa6";
+
 
 function Shell({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) {
   return (
