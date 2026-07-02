@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Download, Mail, ArrowRight, Sparkles } from "lucide-react";
 import { profile, badges, stats, socials } from "@/content/portfolio";
 import { SocialIcon } from "./SocialIcon";
