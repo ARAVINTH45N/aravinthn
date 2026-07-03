@@ -60,9 +60,13 @@ function Index() {
         <About />
         <Skills />
         <Projects />
+        <Gallery />
+        <Publications />
         <Education />
         <Leadership />
         <Achievements />
+        <Testimonials />
+        <Blog />
         <Contact />
       </main>
       <Footer />
