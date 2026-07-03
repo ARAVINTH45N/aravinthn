@@ -207,6 +207,24 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
+
+      <motion.a
+        href="#about"
+        aria-label="Scroll to about"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground"
+      >
+        <motion.span
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-1 text-[10px] uppercase tracking-[0.3em]"
+        >
+          Scroll
+          <ChevronDown className="h-4 w-4 text-primary" />
+        </motion.span>
+      </motion.a>
     </section>
   );
 }
