@@ -159,9 +159,9 @@ export function Projects() {
       <div className="grid gap-6 md:grid-cols-2">
         {filtered.map((p, i) => (
           <Reveal key={p.title} delay={(i % 2) * 0.08}>
-            <div className="glass group relative h-full overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1.5">
+            <Tilt3D strength={7} className="glass group relative h-full overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1.5">
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
-              <div className="relative">
+              <div className="relative" style={{ transform: "translateZ(30px)" }}>
                 <span className="rounded-full border border-primary/30 px-3 py-1 text-xs font-medium text-primary">{p.category}</span>
                 <h3 className="font-display mt-4 text-xl font-semibold">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
