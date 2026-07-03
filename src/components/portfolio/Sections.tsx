@@ -82,13 +82,17 @@ export function About() {
 
 /* ---------------- Skills ---------------- */
 export function Skills() {
+  const allSkills = skillCategories.flatMap((c) => c.skills.map((s) => s.name));
   return (
     <Shell id="skills">
       <SectionHeading eyebrow="Capabilities" title="Skills & Proficiency" subtitle="A full-stack toolkit spanning silicon to the cloud." />
+      <Reveal className="mb-10">
+        <Marquee items={allSkills} />
+      </Reveal>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {skillCategories.map((cat, i) => (
           <Reveal key={cat.name} delay={(i % 3) * 0.08}>
-            <div className="glass group h-full rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
+            <Tilt3D strength={6} className="glass group h-full rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
               <h3 className="font-display text-lg font-semibold">{cat.name}</h3>
               <div className="mt-5 space-y-4">
                 {cat.skills.map((s) => (
