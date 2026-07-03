@@ -113,7 +113,7 @@ export function Skills() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Tilt3D>
           </Reveal>
         ))}
       </div>
