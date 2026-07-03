@@ -301,3 +301,143 @@ export const certifications = [
   { title: "Database for Developers", issuer: "Oracle", link: "#" },
   { title: "AWS Cloud Practitioner", issuer: "Amazon Web Services", link: "#" },
 ];
+
+/* ---------------- Publications ---------------- */
+export type Publication = {
+  title: string;
+  venue: string;
+  year: string;
+  authors: string;
+  abstract: string;
+  tags: string[];
+  link?: string;
+};
+
+export const publications: Publication[] = [
+  {
+    title: "Semantic Candidate Ranking Using Vector Embeddings for Automated Recruitment",
+    venue: "International Journal of Emerging Technologies",
+    year: "2024",
+    authors: "Aravinth N, et al.",
+    abstract:
+      "A framework that leverages transformer embeddings and approximate nearest-neighbour search to rank candidates against job descriptions with context-aware semantic relevance.",
+    tags: ["NLP", "Vector Search", "Recruitment AI"],
+    link: "#",
+  },
+  {
+    title: "Cloud-Native IoT Telemetry Pipelines for Smart City Infrastructure",
+    venue: "IEEE Student Research Symposium",
+    year: "2024",
+    authors: "Aravinth N, et al.",
+    abstract:
+      "A serverless, pay-per-use architecture for ingesting high-frequency sensor telemetry into the cloud, enabling real-time analytics for sustainable urban management.",
+    tags: ["IoT", "AWS", "Edge Computing"],
+    link: "#",
+  },
+  {
+    title: "Adaptive Learning Systems Driven by Machine Learning Personalization",
+    venue: "National Conference on Intelligent Systems",
+    year: "2023",
+    authors: "Aravinth N, et al.",
+    abstract:
+      "An adaptive e-learning engine that continuously tailors content difficulty and pacing to each learner using reinforcement-style feedback loops.",
+    tags: ["Machine Learning", "EdTech", "Personalization"],
+    link: "#",
+  },
+];
+
+/* ---------------- Testimonials ---------------- */
+export type Testimonial = {
+  name: string;
+  role: string;
+  quote: string;
+  initials: string;
+};
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Dr. R. Karthikeyan",
+    role: "Professor, ECE Dept.",
+    quote:
+      "Aravinth pairs rare technical depth with genuine ownership. He turns ambitious research ideas into working systems faster than anyone I've mentored.",
+    initials: "RK",
+  },
+  {
+    name: "Priya Sharma",
+    role: "Product Lead, Startup Collab",
+    quote:
+      "Working with Aravinth felt like having a full engineering team in one person — hardware, AI and cloud, all shipped with polish.",
+    initials: "PS",
+  },
+  {
+    name: "Arjun Mehta",
+    role: "Hackathon Teammate",
+    quote:
+      "He's the person you want in the room at 3 AM before a demo. Calm, resourceful, and relentlessly focused on shipping.",
+    initials: "AM",
+  },
+  {
+    name: "S. Nivetha",
+    role: "Microsoft Club Member",
+    quote:
+      "As VP, Aravinth made complex cloud concepts click for everyone. A natural mentor and an even better builder.",
+    initials: "SN",
+  },
+];
+
+/* ---------------- Gallery ---------------- */
+export type GalleryItem = {
+  title: string;
+  caption: string;
+  span: "tall" | "wide" | "normal";
+  accent: string; // tailwind gradient classes
+};
+
+export const gallery: GalleryItem[] = [
+  { title: "DRESTEIN'24", caption: "Leading Circuit Circus operations", span: "tall", accent: "from-primary/40 to-fuchsia-500/30" },
+  { title: "Zelabria", caption: "Building the founding team", span: "wide", accent: "from-cyan-400/30 to-primary/30" },
+  { title: "Hackathon Wins", caption: "Across Tamil Nadu", span: "normal", accent: "from-fuchsia-500/30 to-purple-500/30" },
+  { title: "Microsoft Club", caption: "Workshops & dev events", span: "normal", accent: "from-emerald-400/30 to-cyan-400/30" },
+  { title: "IoT Lab", caption: "ESP32 & embedded builds", span: "wide", accent: "from-amber-400/30 to-primary/30" },
+  { title: "AWS Journey", caption: "Cloud Practitioner certified", span: "tall", accent: "from-primary/40 to-cyan-400/30" },
+];
+
+/* ---------------- Blog ---------------- */
+export type BlogPost = {
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: string;
+  link?: string;
+};
+
+export const blogPosts: BlogPost[] = [
+  {
+    title: "Building a Semantic Search Engine with FAISS and Embeddings",
+    excerpt:
+      "A practical walkthrough of turning raw text into vectors and serving lightning-fast semantic retrieval in production.",
+    date: "Jun 2024",
+    readTime: "8 min read",
+    category: "AI",
+    link: "#",
+  },
+  {
+    title: "From ESP32 to the Cloud: A Real-Time IoT Pipeline",
+    excerpt:
+      "How I wired embedded sensors to a serverless AWS backend for scalable, pay-per-use telemetry ingestion.",
+    date: "Apr 2024",
+    readTime: "6 min read",
+    category: "IoT",
+    link: "#",
+  },
+  {
+    title: "Lessons From Founding a Tech Company as a Student",
+    excerpt:
+      "The messy, honest reality of starting Zelabria while balancing engineering coursework — and what I'd do differently.",
+    date: "Feb 2024",
+    readTime: "5 min read",
+    category: "Founder",
+    link: "#",
+  },
+];
