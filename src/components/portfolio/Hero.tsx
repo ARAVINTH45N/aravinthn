@@ -116,12 +116,14 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
-            >
-              Hire Me <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
+              >
+                Hire Me <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Magnetic>
             <a
               href="#projects"
               className="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-transform hover:scale-105"
