@@ -6,6 +6,9 @@ import { ScrollProgress, useSmoothScroll } from "@/components/portfolio/motion";
 import {
   About, Skills, Projects, Education, Leadership, Achievements, Contact, Footer,
 } from "@/components/portfolio/Sections";
+import {
+  Gallery, Publications, Testimonials, Blog,
+} from "@/components/portfolio/SectionsExtra";
 
 export const Route = createFileRoute("/")({
   head: () => ({
