@@ -9,6 +9,7 @@ import {
   achievements, certifications, stats, profile, socials,
 } from "@/content/portfolio";
 import { Reveal, SectionHeading, Counter } from "./primitives";
+import { Tilt3D, Marquee } from "./motion";
 import { SocialIcon } from "./SocialIcon";
 import { FaGithub as Github } from "react-icons/fa6";
 
@@ -81,13 +82,17 @@ export function About() {
 
 /* ---------------- Skills ---------------- */
 export function Skills() {
+  const allSkills = skillCategories.flatMap((c) => c.skills.map((s) => s.name));
   return (
     <Shell id="skills">
       <SectionHeading eyebrow="Capabilities" title="Skills & Proficiency" subtitle="A full-stack toolkit spanning silicon to the cloud." />
+      <Reveal className="mb-10">
+        <Marquee items={allSkills} />
+      </Reveal>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {skillCategories.map((cat, i) => (
           <Reveal key={cat.name} delay={(i % 3) * 0.08}>
-            <div className="glass group h-full rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
+            <Tilt3D strength={6} className="glass group h-full rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
               <h3 className="font-display text-lg font-semibold">{cat.name}</h3>
               <div className="mt-5 space-y-4">
                 {cat.skills.map((s) => (
@@ -108,7 +113,7 @@ export function Skills() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Tilt3D>
           </Reveal>
         ))}
       </div>
@@ -154,9 +159,9 @@ export function Projects() {
       <div className="grid gap-6 md:grid-cols-2">
         {filtered.map((p, i) => (
           <Reveal key={p.title} delay={(i % 2) * 0.08}>
-            <div className="glass group relative h-full overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1.5">
+            <Tilt3D strength={7} className="glass group relative h-full overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1.5">
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
-              <div className="relative">
+              <div className="relative" style={{ transform: "translateZ(30px)" }}>
                 <span className="rounded-full border border-primary/30 px-3 py-1 text-xs font-medium text-primary">{p.category}</span>
                 <h3 className="font-display mt-4 text-xl font-semibold">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
@@ -179,7 +184,7 @@ export function Projects() {
                   )}
                 </div>
               </div>
-            </div>
+            </Tilt3D>
           </Reveal>
         ))}
       </div>

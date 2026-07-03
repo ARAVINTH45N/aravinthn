@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Download, Mail, ArrowRight, Sparkles } from "lucide-react";
+import { Download, Mail, ArrowRight, Sparkles, ChevronDown } from "lucide-react";
 import { profile, badges, stats, socials } from "@/content/portfolio";
 import { SocialIcon } from "./SocialIcon";
 import { Counter } from "./primitives";
+import { Tilt3D, Magnetic } from "./motion";
 
 function useTyping(words: string[]) {
   const [index, setIndex] = useState(0);
@@ -115,12 +116,14 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
-            >
-              Hire Me <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
+              >
+                Hire Me <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Magnetic>
             <a
               href="#projects"
               className="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-transform hover:scale-105"
@@ -183,14 +186,15 @@ export function Hero() {
           className="relative mx-auto w-full max-w-sm"
         >
           <div className="absolute -inset-6 animate-float-slow rounded-[2.5rem] bg-gradient-to-tr from-primary/30 via-fuchsia-500/20 to-cyan-400/20 blur-2xl" />
-          <div className="glass-strong relative overflow-hidden rounded-[2rem] p-2">
+          <Tilt3D strength={14} className="glass-strong relative overflow-hidden rounded-[2rem] p-2">
             <img
               src={profile.photo}
               alt="Aravinth N — Engineer & Founder"
               className="w-full rounded-[1.5rem] object-cover"
               loading="eager"
+              style={{ transform: "translateZ(40px)" }}
             />
-          </div>
+          </Tilt3D>
           <div className="glass-strong absolute -bottom-5 left-1/2 flex -translate-x-1/2 gap-6 rounded-2xl px-6 py-3">
             {stats.slice(0, 2).map((s) => (
               <div key={s.label} className="text-center">
@@ -203,6 +207,24 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
+
+      <motion.a
+        href="#about"
+        aria-label="Scroll to about"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground"
+      >
+        <motion.span
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-1 text-[10px] uppercase tracking-[0.3em]"
+        >
+          Scroll
+          <ChevronDown className="h-4 w-4 text-primary" />
+        </motion.span>
+      </motion.a>
     </section>
   );
 }
