@@ -6,9 +6,11 @@ const links = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
+  { id: "gallery", label: "Gallery" },
+  { id: "publications", label: "Research" },
   { id: "education", label: "Education" },
-  { id: "leadership", label: "Leadership" },
-  { id: "achievements", label: "Awards" },
+  { id: "testimonials", label: "Testimonials" },
+  { id: "blog", label: "Blog" },
   { id: "contact", label: "Contact" },
 ];
 
