@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Download, Mail, ArrowRight, Sparkles } from "lucide-react";
+import { Download, Mail, ArrowRight, Sparkles, ChevronDown } from "lucide-react";
 import { profile, badges, stats, socials } from "@/content/portfolio";
 import { SocialIcon } from "./SocialIcon";
 import { Counter } from "./primitives";
+import { Tilt3D, Magnetic } from "./motion";
 
 function useTyping(words: string[]) {
   const [index, setIndex] = useState(0);
