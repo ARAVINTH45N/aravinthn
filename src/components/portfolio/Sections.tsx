@@ -9,6 +9,7 @@ import {
   achievements, certifications, stats, profile, socials,
 } from "@/content/portfolio";
 import { Reveal, SectionHeading, Counter } from "./primitives";
+import { Tilt3D, Marquee } from "./motion";
 import { SocialIcon } from "./SocialIcon";
 import { FaGithub as Github } from "react-icons/fa6";
 
