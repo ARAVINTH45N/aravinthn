@@ -186,14 +186,15 @@ export function Hero() {
           className="relative mx-auto w-full max-w-sm"
         >
           <div className="absolute -inset-6 animate-float-slow rounded-[2.5rem] bg-gradient-to-tr from-primary/30 via-fuchsia-500/20 to-cyan-400/20 blur-2xl" />
-          <div className="glass-strong relative overflow-hidden rounded-[2rem] p-2">
+          <Tilt3D strength={14} className="glass-strong relative overflow-hidden rounded-[2rem] p-2">
             <img
               src={profile.photo}
               alt="Aravinth N — Engineer & Founder"
               className="w-full rounded-[1.5rem] object-cover"
               loading="eager"
+              style={{ transform: "translateZ(40px)" }}
             />
-          </div>
+          </Tilt3D>
           <div className="glass-strong absolute -bottom-5 left-1/2 flex -translate-x-1/2 gap-6 rounded-2xl px-6 py-3">
             {stats.slice(0, 2).map((s) => (
               <div key={s.label} className="text-center">
