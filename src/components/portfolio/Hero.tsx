@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Download, Mail, ArrowRight, Sparkles, ChevronDown } from "lucide-react";
-import { profile, badges, stats, socials } from "@/content/portfolio";
+import { usePortfolio } from "@/lib/portfolio-data";
 import { SocialIcon } from "./SocialIcon";
 import { Counter } from "./primitives";
 import { Tilt3D, Magnetic } from "./motion";
