@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Quote, ArrowUpRight, Calendar, Clock, ExternalLink } from "lucide-react";
-import { publications, testimonials, gallery, blogPosts } from "@/content/portfolio";
+import { usePortfolio } from "@/lib/portfolio-data";
 import { Reveal, SectionHeading } from "./primitives";
 import { Tilt3D } from "./motion";
 
@@ -15,6 +15,7 @@ function Shell({ id, children, className = "" }: { id: string; children: React.R
 
 /* ---------------- Gallery (masonry) ---------------- */
 export function Gallery() {
+  const { gallery } = usePortfolio();
   const spanClass: Record<string, string> = {
     tall: "row-span-2",
     wide: "sm:col-span-2",
@@ -27,7 +28,15 @@ export function Gallery() {
         {gallery.map((g, i) => (
           <Reveal key={g.title} delay={(i % 3) * 0.08} className={spanClass[g.span]}>
             <Tilt3D strength={8} className={`group glass relative h-full overflow-hidden rounded-2xl`}>
-              <div className={`absolute inset-0 bg-gradient-to-br ${g.accent} transition-transform duration-700 group-hover:scale-110`} />
+              {(g as { image?: string }).image ? (
+                <img
+                  src={(g as { image?: string }).image}
+                  alt={g.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              ) : (
+                <div className={`absolute inset-0 bg-gradient-to-br ${g.accent} transition-transform duration-700 group-hover:scale-110`} />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5" style={{ transform: "translateZ(30px)" }}>
                 <h3 className="font-display text-lg font-semibold">{g.title}</h3>
@@ -43,6 +52,7 @@ export function Gallery() {
 
 /* ---------------- Publications ---------------- */
 export function Publications() {
+  const { publications } = usePortfolio();
   return (
     <Shell id="publications">
       <SectionHeading eyebrow="Research" title="Publications" subtitle="Peer-reviewed work at the intersection of AI, IoT and the cloud." />
@@ -86,6 +96,7 @@ export function Publications() {
 
 /* ---------------- Testimonials ---------------- */
 export function Testimonials() {
+  const { testimonials } = usePortfolio();
   const [active, setActive] = useState(0);
   const t = testimonials[active];
   return (
@@ -140,6 +151,7 @@ export function Testimonials() {
 
 /* ---------------- Blog ---------------- */
 export function Blog() {
+  const { blogPosts } = usePortfolio();
   return (
     <Shell id="blog">
       <SectionHeading eyebrow="Writing" title="From the Blog" subtitle="Notes on building at the frontier of AI, IoT and the cloud." />

@@ -3,6 +3,7 @@ import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
 import { ScrollProgress, useSmoothScroll } from "@/components/portfolio/motion";
+import { PortfolioProvider } from "@/lib/portfolio-data";
 import {
   About, Skills, Projects, Education, Leadership, Achievements, Contact, Footer,
 } from "@/components/portfolio/Sections";
@@ -50,6 +51,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   useSmoothScroll();
   return (
+    <PortfolioProvider>
     <div className="relative min-h-screen overflow-x-hidden">
       <div className="aurora" />
       <ScrollProgress />
@@ -71,5 +73,6 @@ function Index() {
       </main>
       <Footer />
     </div>
+    </PortfolioProvider>
   );
 }

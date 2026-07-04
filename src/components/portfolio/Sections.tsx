@@ -4,10 +4,7 @@ import {
   Target, Eye, Compass, Rocket, GraduationCap, Briefcase, ExternalLink,
   MapPin, Mail, Phone, Trophy, BadgeCheck,
 } from "lucide-react";
-import {
-  about, skillCategories, projects, projectCategories, education, leadership,
-  achievements, certifications, stats, profile, socials,
-} from "@/content/portfolio";
+import { usePortfolio } from "@/lib/portfolio-data";
 import { Reveal, SectionHeading, Counter } from "./primitives";
 import { Tilt3D, Marquee } from "./motion";
 import { SocialIcon } from "./SocialIcon";
@@ -24,6 +21,7 @@ function Shell({ id, children, className = "" }: { id: string; children: React.R
 
 /* ---------------- About ---------------- */
 export function About() {
+  const { about, stats } = usePortfolio();
   const cards = [
     { icon: Target, title: "Mission", text: about.mission },
     { icon: Eye, title: "Vision", text: about.vision },
@@ -82,6 +80,7 @@ export function About() {
 
 /* ---------------- Skills ---------------- */
 export function Skills() {
+  const { skillCategories } = usePortfolio();
   const allSkills = skillCategories.flatMap((c) => c.skills.map((s) => s.name));
   return (
     <Shell id="skills">
@@ -123,6 +122,7 @@ export function Skills() {
 
 /* ---------------- Projects ---------------- */
 export function Projects() {
+  const { projects, projectCategories } = usePortfolio();
   const [filter, setFilter] = useState("All");
   const [query, setQuery] = useState("");
   const filtered = projects.filter(
@@ -219,6 +219,7 @@ function TimelineItem({ icon: Icon, title, sub, period, points, chip }: {
 }
 
 export function Education() {
+  const { education, certifications } = usePortfolio();
   return (
     <Shell id="education">
       <SectionHeading eyebrow="Academics" title="Education" />
@@ -250,6 +251,7 @@ export function Education() {
 }
 
 export function Leadership() {
+  const { leadership } = usePortfolio();
   return (
     <Shell id="leadership">
       <SectionHeading eyebrow="Impact" title="Leadership & Experience" />
@@ -265,6 +267,7 @@ export function Leadership() {
 }
 
 export function Achievements() {
+  const { achievements } = usePortfolio();
   return (
     <Shell id="achievements">
       <SectionHeading eyebrow="Milestones" title="Achievements & Awards" />
@@ -290,6 +293,7 @@ export function Achievements() {
 
 /* ---------------- Contact ---------------- */
 export function Contact() {
+  const { profile, socials } = usePortfolio();
   return (
     <Shell id="contact">
       <SectionHeading eyebrow="Get In Touch" title="Let's Build Something" subtitle="Open to roles, research collaborations and freelance projects." />
@@ -342,6 +346,7 @@ export function Contact() {
 }
 
 export function Footer() {
+  const { socials } = usePortfolio();
   return (
     <footer className="border-t border-border/60 px-4 py-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
