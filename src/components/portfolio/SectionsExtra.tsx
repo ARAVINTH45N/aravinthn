@@ -86,6 +86,7 @@ export function Publications() {
 
 /* ---------------- Testimonials ---------------- */
 export function Testimonials() {
+  const { testimonials } = usePortfolio();
   const [active, setActive] = useState(0);
   const t = testimonials[active];
   return (
