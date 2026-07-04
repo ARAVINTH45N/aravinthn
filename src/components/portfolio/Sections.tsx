@@ -217,6 +217,7 @@ function TimelineItem({ icon: Icon, title, sub, period, points, chip }: {
 }
 
 export function Education() {
+  const { education, certifications } = usePortfolio();
   return (
     <Shell id="education">
       <SectionHeading eyebrow="Academics" title="Education" />
