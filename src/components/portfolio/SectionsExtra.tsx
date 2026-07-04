@@ -15,6 +15,7 @@ function Shell({ id, children, className = "" }: { id: string; children: React.R
 
 /* ---------------- Gallery (masonry) ---------------- */
 export function Gallery() {
+  const { gallery } = usePortfolio();
   const spanClass: Record<string, string> = {
     tall: "row-span-2",
     wide: "sm:col-span-2",
