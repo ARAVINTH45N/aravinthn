@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { claimAdmin } from "@/lib/portfolio.functions";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 import { Loader2, Lock, ArrowLeft } from "lucide-react";
 
 export const Route = createFileRoute("/auth")({
