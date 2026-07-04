@@ -51,6 +51,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   useSmoothScroll();
   return (
+    <PortfolioProvider>
     <div className="relative min-h-screen overflow-x-hidden">
       <div className="aurora" />
       <ScrollProgress />
