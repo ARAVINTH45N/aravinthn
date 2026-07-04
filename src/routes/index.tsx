@@ -73,5 +73,6 @@ function Index() {
       </main>
       <Footer />
     </div>
+    </PortfolioProvider>
   );
 }
