@@ -140,6 +140,7 @@ export function Testimonials() {
 
 /* ---------------- Blog ---------------- */
 export function Blog() {
+  const { blogPosts } = usePortfolio();
   return (
     <Shell id="blog">
       <SectionHeading eyebrow="Writing" title="From the Blog" subtitle="Notes on building at the frontier of AI, IoT and the cloud." />
