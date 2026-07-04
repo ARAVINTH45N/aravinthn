@@ -80,6 +80,7 @@ export function About() {
 
 /* ---------------- Skills ---------------- */
 export function Skills() {
+  const { skillCategories } = usePortfolio();
   const allSkills = skillCategories.flatMap((c) => c.skills.map((s) => s.name));
   return (
     <Shell id="skills">
