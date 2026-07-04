@@ -419,7 +419,7 @@ function ListEditor({
       if (editing.id) {
         const { error } = await supabase
           .from("content_items")
-          .update({ data: draft })
+          .update({ data: draft } as any)
           .eq("id", editing.id);
         if (error) throw error;
       } else {
@@ -428,7 +428,7 @@ function ListEditor({
           data: draft,
           sort_order: editing.sort_order,
           published: true,
-        });
+        } as any);
         if (error) throw error;
       }
       toast.success("Saved");
