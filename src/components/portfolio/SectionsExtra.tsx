@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Quote, ArrowUpRight, Calendar, Clock, ExternalLink } from "lucide-react";
-import { publications, testimonials, gallery, blogPosts } from "@/content/portfolio";
+import { usePortfolio } from "@/lib/portfolio-data";
 import { Reveal, SectionHeading } from "./primitives";
 import { Tilt3D } from "./motion";
 
