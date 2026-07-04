@@ -62,6 +62,7 @@ function AuthPage() {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4">
+      <Toaster />
       <div className="aurora" />
       <Link
         to="/"
