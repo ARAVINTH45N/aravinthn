@@ -248,6 +248,7 @@ export function Education() {
 }
 
 export function Leadership() {
+  const { leadership } = usePortfolio();
   return (
     <Shell id="leadership">
       <SectionHeading eyebrow="Impact" title="Leadership & Experience" />
