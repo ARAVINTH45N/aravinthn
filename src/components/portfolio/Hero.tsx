@@ -65,6 +65,7 @@ function Particles() {
 }
 
 export function Hero() {
+  const { profile, badges, stats, socials } = usePortfolio();
   const typed = useTyping(profile.roles);
 
   return (
