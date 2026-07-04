@@ -21,6 +21,7 @@ function Shell({ id, children, className = "" }: { id: string; children: React.R
 
 /* ---------------- About ---------------- */
 export function About() {
+  const { about, stats } = usePortfolio();
   const cards = [
     { icon: Target, title: "Mission", text: about.mission },
     { icon: Eye, title: "Vision", text: about.vision },
