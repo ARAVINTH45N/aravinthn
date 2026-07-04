@@ -43,6 +43,7 @@ export function Gallery() {
 
 /* ---------------- Publications ---------------- */
 export function Publications() {
+  const { publications } = usePortfolio();
   return (
     <Shell id="publications">
       <SectionHeading eyebrow="Research" title="Publications" subtitle="Peer-reviewed work at the intersection of AI, IoT and the cloud." />
