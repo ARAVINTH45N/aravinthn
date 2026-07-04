@@ -354,10 +354,10 @@ function SettingEditor({
     setSaving(true);
     try {
       if (section.key === "stats") {
-        await supabase.from("site_settings").upsert({ key: "stats", value: { items: value.stats ?? [] } });
-        await supabase.from("site_settings").upsert({ key: "badges", value: { items: value.badges ?? [] } });
+        await supabase.from("site_settings").upsert({ key: "stats", value: { items: value.stats ?? [] } } as any);
+        await supabase.from("site_settings").upsert({ key: "badges", value: { items: value.badges ?? [] } } as any);
       } else {
-        const { error } = await supabase.from("site_settings").upsert({ key: section.key, value });
+        const { error } = await supabase.from("site_settings").upsert({ key: section.key, value } as any);
         if (error) throw error;
       }
       toast.success("Saved");
