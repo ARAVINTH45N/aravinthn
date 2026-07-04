@@ -3,6 +3,7 @@ import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
 import { ScrollProgress, useSmoothScroll } from "@/components/portfolio/motion";
+import { PortfolioProvider } from "@/lib/portfolio-data";
 import {
   About, Skills, Projects, Education, Leadership, Achievements, Contact, Footer,
 } from "@/components/portfolio/Sections";
