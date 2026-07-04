@@ -121,6 +121,7 @@ export function Skills() {
 
 /* ---------------- Projects ---------------- */
 export function Projects() {
+  const { projects, projectCategories } = usePortfolio();
   const [filter, setFilter] = useState("All");
   const [query, setQuery] = useState("");
   const filtered = projects.filter(
