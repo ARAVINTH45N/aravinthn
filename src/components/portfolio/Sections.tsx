@@ -263,6 +263,7 @@ export function Leadership() {
 }
 
 export function Achievements() {
+  const { achievements } = usePortfolio();
   return (
     <Shell id="achievements">
       <SectionHeading eyebrow="Milestones" title="Achievements & Awards" />
