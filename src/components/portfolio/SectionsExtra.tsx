@@ -28,7 +28,15 @@ export function Gallery() {
         {gallery.map((g, i) => (
           <Reveal key={g.title} delay={(i % 3) * 0.08} className={spanClass[g.span]}>
             <Tilt3D strength={8} className={`group glass relative h-full overflow-hidden rounded-2xl`}>
-              <div className={`absolute inset-0 bg-gradient-to-br ${g.accent} transition-transform duration-700 group-hover:scale-110`} />
+              {(g as { image?: string }).image ? (
+                <img
+                  src={(g as { image?: string }).image}
+                  alt={g.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              ) : (
+                <div className={`absolute inset-0 bg-gradient-to-br ${g.accent} transition-transform duration-700 group-hover:scale-110`} />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5" style={{ transform: "translateZ(30px)" }}>
                 <h3 className="font-display text-lg font-semibold">{g.title}</h3>
