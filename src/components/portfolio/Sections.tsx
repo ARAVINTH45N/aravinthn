@@ -288,6 +288,7 @@ export function Achievements() {
 
 /* ---------------- Contact ---------------- */
 export function Contact() {
+  const { profile, socials } = usePortfolio();
   return (
     <Shell id="contact">
       <SectionHeading eyebrow="Get In Touch" title="Let's Build Something" subtitle="Open to roles, research collaborations and freelance projects." />
