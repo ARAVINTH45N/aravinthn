@@ -4,10 +4,7 @@ import {
   Target, Eye, Compass, Rocket, GraduationCap, Briefcase, ExternalLink,
   MapPin, Mail, Phone, Trophy, BadgeCheck,
 } from "lucide-react";
-import {
-  about, skillCategories, projects, projectCategories, education, leadership,
-  achievements, certifications, stats, profile, socials,
-} from "@/content/portfolio";
+import { usePortfolio } from "@/lib/portfolio-data";
 import { Reveal, SectionHeading, Counter } from "./primitives";
 import { Tilt3D, Marquee } from "./motion";
 import { SocialIcon } from "./SocialIcon";
