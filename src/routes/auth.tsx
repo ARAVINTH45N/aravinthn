@@ -46,7 +46,7 @@ function AuthPage() {
         if (error) throw error;
       }
       // Bootstrap admin role for the first user, then confirm access.
-      const res = await claim({ data: undefined } as never).catch(() => ({ isAdmin: false }));
+      const res = await claim().catch(() => ({ isAdmin: false }));
       if (!res.isAdmin) {
         toast.error("Signed in, but this account is not an admin.");
       }
