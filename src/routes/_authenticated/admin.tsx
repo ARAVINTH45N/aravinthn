@@ -472,6 +472,30 @@ function ListEditor({
     onChanged();
   }
 
+  const [importing, setImporting] = useState(false);
+  async function importDefaults() {
+    const defaults = DEFAULT_ITEMS[section.key] ?? [];
+    if (!defaults.length) return;
+    setImporting(true);
+    try {
+      const rows = defaults.map((data, i) => ({
+        type: section.key,
+        data,
+        sort_order: i,
+        published: true,
+      }));
+      const { error } = await supabase.from("content_items").insert(rows as any);
+      if (error) throw error;
+      toast.success(`Imported ${rows.length} ${section.label.toLowerCase()}`);
+      onChanged();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Import failed");
+    } finally {
+      setImporting(false);
+    }
+  }
+
+
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
