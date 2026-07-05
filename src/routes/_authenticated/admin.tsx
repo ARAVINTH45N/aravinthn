@@ -342,11 +342,16 @@ function SettingEditor({
   current: Record<string, unknown>;
   onSaved: () => void;
 }) {
-  // stats section stores { stats:[], badges:[] } but persisted as two keys
+  // Pre-fill the form with existing content: defaults merged with any saved values,
+  // so the admin always sees the current portfolio content and can edit it.
+  const defaultsForKey = defaultSettingValue(section.key);
   const initial =
     section.key === "stats"
-      ? { stats: (current as any).items ?? undefined, badges: undefined }
-      : current;
+      ? {
+          stats: (current as any).items ?? (defaultsForKey.stats as unknown[]),
+          badges: (current as any).badges ?? (defaultsForKey.badges as unknown[]),
+        }
+      : { ...defaultsForKey, ...current };
   const [value, setValue] = useState<Record<string, unknown>>(initial);
   const [saving, setSaving] = useState(false);
 
