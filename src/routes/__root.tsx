@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Aravinth N — AI, Cloud & Full Stack Engineer | Founder of Zelabria" },
+      { name: "description", content: "Aravinth N — Electronics & Communication Engineer, AI & Data Engineer, Cloud enthusiast, Full Stack & IoT developer, and Founder & CEO of Zelabria. Explore projects, skills and research." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Aravinth N — AI, Cloud & Full Stack Engineer | Founder of Zelabria" },
+      { property: "og:description", content: "Aravinth N — Electronics & Communication Engineer, AI & Data Engineer, Cloud enthusiast, Full Stack & IoT developer, and Founder & CEO of Zelabria. Explore projects, skills and research." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Aravinth N — AI, Cloud & Full Stack Engineer | Founder of Zelabria" },
+      { name: "twitter:description", content: "Aravinth N — Electronics & Communication Engineer, AI & Data Engineer, Cloud enthusiast, Full Stack & IoT developer, and Founder & CEO of Zelabria. Explore projects, skills and research." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/pHAcVHPidoZJikIbJXSNdbvuqdg1/social-images/social-1783272842432-aravinth_image_1.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/pHAcVHPidoZJikIbJXSNdbvuqdg1/social-images/social-1783272842432-aravinth_image_1.webp" },
     ],
     links: [
       {
