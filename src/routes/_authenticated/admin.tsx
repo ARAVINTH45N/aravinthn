@@ -4,7 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { checkAdmin } from "@/lib/portfolio.functions";
 import { useServerFn } from "@tanstack/react-start";
-import { fetchRemoteContent, type ContentType } from "@/lib/portfolio-data";
+import { fetchRemoteContent, DEFAULT_ITEMS, defaultSettingValue, type ContentType } from "@/lib/portfolio-data";
 import { RecordForm, type FieldDef } from "@/components/admin/editors";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
