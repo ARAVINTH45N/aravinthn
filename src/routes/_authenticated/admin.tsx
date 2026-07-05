@@ -302,12 +302,21 @@ function AdminPage() {
             </div>
           ) : isSetting ? (
             <SettingEditor
+              key={activeKey}
               section={activeSection as SettingSection}
-              current={contentQ.data?.settings[activeKey] ?? {}}
+              current={
+                activeKey === "stats"
+                  ? {
+                      items: contentQ.data?.settings.stats?.items,
+                      badges: contentQ.data?.settings.badges?.items,
+                    }
+                  : contentQ.data?.settings[activeKey] ?? {}
+              }
               onSaved={() => contentQ.refetch()}
             />
           ) : (
             <ListEditor
+              key={activeKey}
               section={activeSection as ListSection}
               items={(contentQ.data?.items ?? []).filter((i) => i.type === activeKey)}
               onChanged={() => contentQ.refetch()}
