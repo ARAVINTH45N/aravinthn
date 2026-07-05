@@ -534,9 +534,21 @@ function ListEditor({
 
       <div className="space-y-2">
         {items.length === 0 && (
-          <p className="text-sm text-muted-foreground">
-            No items yet — the site shows default content until you add your own.
-          </p>
+          <div className="glass rounded-xl p-6 text-center">
+            <p className="text-sm text-muted-foreground">
+              Nothing saved yet. The public site currently shows the built-in default content.
+            </p>
+            {(DEFAULT_ITEMS[section.key]?.length ?? 0) > 0 && (
+              <button
+                onClick={importDefaults}
+                disabled={importing}
+                className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:opacity-60"
+              >
+                {importing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
+                Import current {section.label.toLowerCase()} to edit
+              </button>
+            )}
+          </div>
         )}
         {items.map((it) => (
           <div key={it.id} className="glass flex items-center justify-between gap-3 rounded-xl p-4">
