@@ -80,6 +80,37 @@ function group(items: RawItem[], type: ContentType) {
   return items.filter((i) => i.type === type).map((i) => i.data);
 }
 
+/* ---------------- Defaults for the admin editors ---------------- */
+// Default list content per content type, so the dashboard can show/import current content.
+export const DEFAULT_ITEMS: Record<ContentType, Record<string, unknown>[]> = {
+  project: defaults.projects as unknown as Record<string, unknown>[],
+  certification: defaults.certifications as unknown as Record<string, unknown>[],
+  gallery: defaults.gallery as unknown as Record<string, unknown>[],
+  publication: defaults.publications as unknown as Record<string, unknown>[],
+  leadership: defaults.leadership as unknown as Record<string, unknown>[],
+  achievement: defaults.achievements as unknown as Record<string, unknown>[],
+  skillCategory: defaults.skillCategories as unknown as Record<string, unknown>[],
+  education: defaults.education as unknown as Record<string, unknown>[],
+  competition: [],
+  document: [],
+  social: defaults.socials as unknown as Record<string, unknown>[],
+  blog: defaults.blogPosts as unknown as Record<string, unknown>[],
+};
+
+// Default singleton settings value per setting key.
+export function defaultSettingValue(key: string): Record<string, unknown> {
+  switch (key) {
+    case "profile":
+      return { ...defaults.profile };
+    case "about":
+      return { ...defaults.about };
+    case "stats":
+      return { stats: defaults.stats, badges: defaults.badges };
+    default:
+      return {};
+  }
+}
+
 export function mergeContent(remote: RemoteContent | undefined): PortfolioData {
   const items = remote?.items ?? [];
   const settings = remote?.settings ?? {};

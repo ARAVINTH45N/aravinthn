@@ -4,7 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { checkAdmin } from "@/lib/portfolio.functions";
 import { useServerFn } from "@tanstack/react-start";
-import { fetchRemoteContent, type ContentType } from "@/lib/portfolio-data";
+import { fetchRemoteContent, DEFAULT_ITEMS, defaultSettingValue, type ContentType } from "@/lib/portfolio-data";
 import { RecordForm, type FieldDef } from "@/components/admin/editors";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
@@ -302,12 +302,21 @@ function AdminPage() {
             </div>
           ) : isSetting ? (
             <SettingEditor
+              key={activeKey}
               section={activeSection as SettingSection}
-              current={contentQ.data?.settings[activeKey] ?? {}}
+              current={
+                activeKey === "stats"
+                  ? {
+                      items: contentQ.data?.settings.stats?.items,
+                      badges: contentQ.data?.settings.badges?.items,
+                    }
+                  : contentQ.data?.settings[activeKey] ?? {}
+              }
               onSaved={() => contentQ.refetch()}
             />
           ) : (
             <ListEditor
+              key={activeKey}
               section={activeSection as ListSection}
               items={(contentQ.data?.items ?? []).filter((i) => i.type === activeKey)}
               onChanged={() => contentQ.refetch()}
@@ -342,11 +351,16 @@ function SettingEditor({
   current: Record<string, unknown>;
   onSaved: () => void;
 }) {
-  // stats section stores { stats:[], badges:[] } but persisted as two keys
+  // Pre-fill the form with existing content: defaults merged with any saved values,
+  // so the admin always sees the current portfolio content and can edit it.
+  const defaultsForKey = defaultSettingValue(section.key);
   const initial =
     section.key === "stats"
-      ? { stats: (current as any).items ?? undefined, badges: undefined }
-      : current;
+      ? {
+          stats: (current as any).items ?? (defaultsForKey.stats as unknown[]),
+          badges: (current as any).badges ?? (defaultsForKey.badges as unknown[]),
+        }
+      : { ...defaultsForKey, ...current };
   const [value, setValue] = useState<Record<string, unknown>>(initial);
   const [saving, setSaving] = useState(false);
 
@@ -458,6 +472,30 @@ function ListEditor({
     onChanged();
   }
 
+  const [importing, setImporting] = useState(false);
+  async function importDefaults() {
+    const defaults = DEFAULT_ITEMS[section.key] ?? [];
+    if (!defaults.length) return;
+    setImporting(true);
+    try {
+      const rows = defaults.map((data, i) => ({
+        type: section.key,
+        data,
+        sort_order: i,
+        published: true,
+      }));
+      const { error } = await supabase.from("content_items").insert(rows as any);
+      if (error) throw error;
+      toast.success(`Imported ${rows.length} ${section.label.toLowerCase()}`);
+      onChanged();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Import failed");
+    } finally {
+      setImporting(false);
+    }
+  }
+
+
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
@@ -496,9 +534,21 @@ function ListEditor({
 
       <div className="space-y-2">
         {items.length === 0 && (
-          <p className="text-sm text-muted-foreground">
-            No items yet — the site shows default content until you add your own.
-          </p>
+          <div className="glass rounded-xl p-6 text-center">
+            <p className="text-sm text-muted-foreground">
+              Nothing saved yet. The public site currently shows the built-in default content.
+            </p>
+            {(DEFAULT_ITEMS[section.key]?.length ?? 0) > 0 && (
+              <button
+                onClick={importDefaults}
+                disabled={importing}
+                className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:opacity-60"
+              >
+                {importing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
+                Import current {section.label.toLowerCase()} to edit
+              </button>
+            )}
+          </div>
         )}
         {items.map((it) => (
           <div key={it.id} className="glass flex items-center justify-between gap-3 rounded-xl p-4">
