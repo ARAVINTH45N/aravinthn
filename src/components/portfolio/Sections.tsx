@@ -32,7 +32,7 @@ export function About() {
       <div className="grid gap-6 md:grid-cols-2">
         {cards.map((c, i) => (
           <Reveal key={c.title} delay={i * 0.1}>
-            <div className="glass h-full rounded-2xl p-7">
+            <div className="glass hover-lift h-full rounded-2xl p-7">
               <c.icon className="h-6 w-6 text-primary" />
               <h3 className="font-display mt-4 text-xl font-semibold">{c.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
@@ -42,7 +42,7 @@ export function About() {
       </div>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <Reveal>
-          <div className="glass h-full rounded-2xl p-7">
+          <div className="glass hover-lift h-full rounded-2xl p-7">
             <Compass className="h-6 w-6 text-primary" />
             <h3 className="font-display mt-4 text-xl font-semibold">Core Values</h3>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -53,7 +53,7 @@ export function About() {
           </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="glass h-full rounded-2xl p-7">
+          <div className="glass hover-lift h-full rounded-2xl p-7">
             <Rocket className="h-6 w-6 text-primary" />
             <h3 className="font-display mt-4 text-xl font-semibold">Current Focus</h3>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
@@ -67,7 +67,7 @@ export function About() {
       <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
-            <div className="glass rounded-2xl p-6 text-center">
+            <div className="glass hover-lift rounded-2xl p-6 text-center">
               <div className="font-display text-3xl font-bold text-gradient"><Counter value={s.value} suffix={s.suffix} /></div>
               <div className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">{s.label}</div>
             </div>
@@ -201,7 +201,7 @@ function TimelineItem({ icon: Icon, title, sub, period, points, chip }: {
       <span className="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-xl bg-primary/15 text-primary">
         <Icon className="h-4 w-4" />
       </span>
-      <div className="glass rounded-2xl p-6">
+      <div className="glass hover-lift rounded-2xl p-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="font-display text-lg font-semibold">{title}</h3>
           {chip && <span className="rounded-full border border-primary/30 px-3 py-1 text-xs text-primary">{chip}</span>}
@@ -299,7 +299,7 @@ export function Contact() {
       <SectionHeading eyebrow="Get In Touch" title="Let's Build Something" subtitle="Open to roles, research collaborations and freelance projects." />
       <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
         <Reveal>
-          <div className="glass h-full rounded-2xl p-7">
+          <div className="glass hover-lift h-full rounded-2xl p-7">
             <h3 className="font-display text-xl font-semibold">Contact details</h3>
             <div className="mt-5 space-y-4 text-sm">
               <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-muted-foreground hover:text-foreground">
