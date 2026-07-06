@@ -11,10 +11,13 @@ import { SocialIcon } from "./SocialIcon";
 import { FaGithub as Github } from "react-icons/fa6";
 
 
-function Shell({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) {
+function Shell({ id, children, className = "", tint = false }: { id: string; children: React.ReactNode; className?: string; tint?: boolean }) {
   return (
-    <section id={id} className={`relative mx-auto max-w-6xl px-4 py-24 ${className}`}>
-      {children}
+    <section id={id} className={`relative px-4 py-24 ${className}`}>
+      {tint && (
+        <div className="section-light pointer-events-none absolute inset-x-0 inset-y-6 -z-10 border-y border-white/5" />
+      )}
+      <div className="relative mx-auto max-w-6xl">{children}</div>
     </section>
   );
 }
@@ -32,7 +35,7 @@ export function About() {
       <div className="grid gap-6 md:grid-cols-2">
         {cards.map((c, i) => (
           <Reveal key={c.title} delay={i * 0.1}>
-            <div className="glass h-full rounded-2xl p-7">
+            <div className="glass hover-lift h-full rounded-2xl p-7">
               <c.icon className="h-6 w-6 text-primary" />
               <h3 className="font-display mt-4 text-xl font-semibold">{c.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
@@ -42,7 +45,7 @@ export function About() {
       </div>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <Reveal>
-          <div className="glass h-full rounded-2xl p-7">
+          <div className="glass hover-lift h-full rounded-2xl p-7">
             <Compass className="h-6 w-6 text-primary" />
             <h3 className="font-display mt-4 text-xl font-semibold">Core Values</h3>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -53,7 +56,7 @@ export function About() {
           </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="glass h-full rounded-2xl p-7">
+          <div className="glass hover-lift h-full rounded-2xl p-7">
             <Rocket className="h-6 w-6 text-primary" />
             <h3 className="font-display mt-4 text-xl font-semibold">Current Focus</h3>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
@@ -67,7 +70,7 @@ export function About() {
       <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
-            <div className="glass rounded-2xl p-6 text-center">
+            <div className="glass hover-lift rounded-2xl p-6 text-center">
               <div className="font-display text-3xl font-bold text-gradient"><Counter value={s.value} suffix={s.suffix} /></div>
               <div className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">{s.label}</div>
             </div>
@@ -83,7 +86,7 @@ export function Skills() {
   const { skillCategories } = usePortfolio();
   const allSkills = skillCategories.flatMap((c) => c.skills.map((s) => s.name));
   return (
-    <Shell id="skills">
+    <Shell id="skills" tint>
       <SectionHeading eyebrow="Capabilities" title="Skills & Proficiency" subtitle="A full-stack toolkit spanning silicon to the cloud." />
       <Reveal className="mb-10">
         <Marquee items={allSkills} />
@@ -201,7 +204,7 @@ function TimelineItem({ icon: Icon, title, sub, period, points, chip }: {
       <span className="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-xl bg-primary/15 text-primary">
         <Icon className="h-4 w-4" />
       </span>
-      <div className="glass rounded-2xl p-6">
+      <div className="glass hover-lift rounded-2xl p-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="font-display text-lg font-semibold">{title}</h3>
           {chip && <span className="rounded-full border border-primary/30 px-3 py-1 text-xs text-primary">{chip}</span>}
@@ -221,7 +224,7 @@ function TimelineItem({ icon: Icon, title, sub, period, points, chip }: {
 export function Education() {
   const { education, certifications } = usePortfolio();
   return (
-    <Shell id="education">
+    <Shell id="education" tint>
       <SectionHeading eyebrow="Academics" title="Education" />
       <div className="relative space-y-6 before:absolute before:left-[15px] before:top-2 before:h-full before:w-px before:bg-border">
         {education.map((e, i) => (
@@ -269,7 +272,7 @@ export function Leadership() {
 export function Achievements() {
   const { achievements } = usePortfolio();
   return (
-    <Shell id="achievements">
+    <Shell id="achievements" tint>
       <SectionHeading eyebrow="Milestones" title="Achievements & Awards" />
       <div className="grid gap-5 md:grid-cols-2">
         {achievements.map((a, i) => (
@@ -299,7 +302,7 @@ export function Contact() {
       <SectionHeading eyebrow="Get In Touch" title="Let's Build Something" subtitle="Open to roles, research collaborations and freelance projects." />
       <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
         <Reveal>
-          <div className="glass h-full rounded-2xl p-7">
+          <div className="glass hover-lift h-full rounded-2xl p-7">
             <h3 className="font-display text-xl font-semibold">Contact details</h3>
             <div className="mt-5 space-y-4 text-sm">
               <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-muted-foreground hover:text-foreground">
@@ -335,7 +338,7 @@ export function Contact() {
             <input name="name" required placeholder="Your name" className="glass rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/40" />
             <input name="email" type="email" required placeholder="Email" className="glass rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/40" />
             <textarea name="message" required rows={5} placeholder="Tell me about your project…" className="glass resize-none rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/40" />
-            <button type="submit" className="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]">
+            <button type="submit" className="glow-btn rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
               Send Message
             </button>
           </form>
