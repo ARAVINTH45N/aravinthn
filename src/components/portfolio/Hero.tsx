@@ -120,7 +120,7 @@ export function Hero() {
             <Magnetic>
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
+                className="glow-btn group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
               >
                 Hire Me <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
