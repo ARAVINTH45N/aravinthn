@@ -86,7 +86,7 @@ export function Skills() {
   const { skillCategories } = usePortfolio();
   const allSkills = skillCategories.flatMap((c) => c.skills.map((s) => s.name));
   return (
-    <Shell id="skills">
+    <Shell id="skills" tint>
       <SectionHeading eyebrow="Capabilities" title="Skills & Proficiency" subtitle="A full-stack toolkit spanning silicon to the cloud." />
       <Reveal className="mb-10">
         <Marquee items={allSkills} />
@@ -224,7 +224,7 @@ function TimelineItem({ icon: Icon, title, sub, period, points, chip }: {
 export function Education() {
   const { education, certifications } = usePortfolio();
   return (
-    <Shell id="education">
+    <Shell id="education" tint>
       <SectionHeading eyebrow="Academics" title="Education" />
       <div className="relative space-y-6 before:absolute before:left-[15px] before:top-2 before:h-full before:w-px before:bg-border">
         {education.map((e, i) => (
@@ -272,7 +272,7 @@ export function Leadership() {
 export function Achievements() {
   const { achievements } = usePortfolio();
   return (
-    <Shell id="achievements">
+    <Shell id="achievements" tint>
       <SectionHeading eyebrow="Milestones" title="Achievements & Awards" />
       <div className="grid gap-5 md:grid-cols-2">
         {achievements.map((a, i) => (
