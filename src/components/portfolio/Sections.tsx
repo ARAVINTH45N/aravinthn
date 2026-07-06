@@ -11,10 +11,13 @@ import { SocialIcon } from "./SocialIcon";
 import { FaGithub as Github } from "react-icons/fa6";
 
 
-function Shell({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) {
+function Shell({ id, children, className = "", tint = false }: { id: string; children: React.ReactNode; className?: string; tint?: boolean }) {
   return (
-    <section id={id} className={`relative mx-auto max-w-6xl px-4 py-24 ${className}`}>
-      {children}
+    <section id={id} className={`relative px-4 py-24 ${className}`}>
+      {tint && (
+        <div className="section-light pointer-events-none absolute inset-x-0 inset-y-6 -z-10 border-y border-white/5" />
+      )}
+      <div className="relative mx-auto max-w-6xl">{children}</div>
     </section>
   );
 }
