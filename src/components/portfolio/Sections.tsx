@@ -335,7 +335,7 @@ export function Contact() {
             <input name="name" required placeholder="Your name" className="glass rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/40" />
             <input name="email" type="email" required placeholder="Email" className="glass rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/40" />
             <textarea name="message" required rows={5} placeholder="Tell me about your project…" className="glass resize-none rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/40" />
-            <button type="submit" className="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]">
+            <button type="submit" className="glow-btn rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
               Send Message
             </button>
           </form>
