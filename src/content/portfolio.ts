@@ -47,14 +47,8 @@ export const socials: Social[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/aravinth-n-005085290/", icon: "linkedin" },
   { label: "GitHub", href: "https://github.com/ARAVINTH45N", icon: "github" },
   { label: "Instagram", href: "https://www.instagram.com/_aravinthhh/", icon: "instagram" },
-  { label: "X", href: "https://x.com/", icon: "x" },
-  { label: "Email", href: "mailto:aravinth.vnagarajan@gmail.com", icon: "mail" },
   { label: "WhatsApp", href: "https://wa.me/919025420055", icon: "whatsapp" },
-  { label: "LeetCode", href: "https://leetcode.com/", icon: "leetcode" },
-  { label: "HackerRank", href: "https://www.hackerrank.com/", icon: "hackerrank" },
-  { label: "Medium", href: "https://medium.com/", icon: "medium" },
-  { label: "Google Scholar", href: "https://scholar.google.com/", icon: "scholar" },
-  { label: "ResearchGate", href: "https://www.researchgate.net/", icon: "researchgate" },
+  { label: "Email", href: "mailto:aravinth.vnagarajan@gmail.com", icon: "mail" },
 ];
 
 export const about = {
